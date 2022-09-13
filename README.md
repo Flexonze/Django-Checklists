@@ -1,1 +1,1 @@
-# Django-Checklists
+# Django checklists
