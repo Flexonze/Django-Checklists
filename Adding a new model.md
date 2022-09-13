@@ -20,6 +20,7 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from core.models import UUIDModel
 
+
 class Project(UUIDModel, TimeStampedModel):
     title = models.CharField(max_length=512)
     description = models.CharField(max_length=2000, null=True, blank=True)
@@ -75,6 +76,7 @@ In its minimal form, here’s what the model tests of our `Project` model could 
 from django.test import TestCase
 from app_name.models import Project, User
 
+
 class TestProject(TestCase):
     def test_can_create_a_project(self):
         project = Project(
@@ -116,6 +118,7 @@ import factory
 from app_name import models
 from app_name.tests.factories import UserFactory
 
+
 class ProjectFactory(factory.django.DjangoModelFactory):
     title = factory.Faker("sentence", nb_words=5)
     description = factory.Faker("text", max_nb_chars=300)
@@ -148,6 +151,7 @@ from django.test import TestCase
 from app_name import models
 from app_name.tests import factories
 
+
 class TestFactories(TestCase):
     def test_project_factory(self):
 	initial_project_count = models.Project.objects.count()
@@ -177,6 +181,7 @@ In its minimal form, here’s what the admin page of our `Project` model could l
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 from app_name.models import Project
+
 
 @admin.register(Project)
 class ProjectAdmin(ModelAdmin):
@@ -210,6 +215,7 @@ In its minimal form, here’s what the admin tests of our `ProjectAdmin` pages c
 from django.test import TestCase, Client
 from django.urls import reverse
 from app_name.tests import factories
+
 
 class TestProjectAdmin(TestCase):
     @classmethod
