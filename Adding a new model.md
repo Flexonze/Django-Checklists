@@ -80,7 +80,7 @@ class TestProject(TestCase):
         project = Project(
             title="title",
             description="description",
-			user = User.objects.create(email="email@example.com")
+	    user = User.objects.create(email="email@example.com")
         )
 
         project.full_clean()
@@ -92,7 +92,7 @@ class TestProject(TestCase):
             description="description",
             user = User.objects.create(email="email@example.com")
         )
-		expected_str = "title"
+	expected_str = "title"
 
         self.assertEqual(str(journey), expected_str)
 ```
@@ -150,10 +150,10 @@ from app_name.tests import factories
 
 class TestFactories(TestCase):
     def test_project_factory(self):
-		initial_project_count = models.Project.objects.count()
+	initial_project_count = models.Project.objects.count()
         project_factory = factories.ProjectFactory()
         project_factory.full_clean()
-		project_count = models.Project.objects.count()
+	project_count = models.Project.objects.count()
 
         self.assertEqual(project_count, initial_project_count + 1)
 ```
@@ -215,7 +215,7 @@ class TestProjectAdmin(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user = factories.UserFactory(is_superuser=True)
-		cls.projects = factories.ProjectFactory.create_batch(6)
+	cls.projects = factories.ProjectFactory.create_batch(6)
 
     def setUp(self):
         self.client.force_login(self.user)
