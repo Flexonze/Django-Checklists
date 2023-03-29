@@ -20,6 +20,7 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 from core.models import UUIDModel
 
+
 class Project(UUIDModel, TimeStampedModel):
     title = models.CharField(max_length=512)
     description = models.CharField(max_length=2000, null=True, blank=True)
@@ -75,12 +76,13 @@ In its minimal form, here’s what the model tests of our `Project` model could 
 from django.test import TestCase
 from app_name.models import Project, User
 
+
 class TestProject(TestCase):
     def test_can_create_a_project(self):
         project = Project(
             title="title",
             description="description",
-			user = User.objects.create(email="email@example.com")
+	    user = User.objects.create(email="email@example.com")
         )
 
         project.full_clean()
@@ -92,7 +94,7 @@ class TestProject(TestCase):
             description="description",
             user = User.objects.create(email="email@example.com")
         )
-		expected_str = "title"
+	expected_str = "title"
 
         self.assertEqual(str(journey), expected_str)
 ```
@@ -115,6 +117,7 @@ In its minimal form, here’s what the factory of our `Project` model could look
 import factory
 from app_name import models
 from app_name.tests.factories import UserFactory
+
 
 class ProjectFactory(factory.django.DjangoModelFactory):
     title = factory.Faker("sentence", nb_words=5)
@@ -148,12 +151,13 @@ from django.test import TestCase
 from app_name import models
 from app_name.tests import factories
 
+
 class TestFactories(TestCase):
     def test_project_factory(self):
-		initial_project_count = models.Project.objects.count()
+	initial_project_count = models.Project.objects.count()
         project_factory = factories.ProjectFactory()
         project_factory.full_clean()
-		project_count = models.Project.objects.count()
+	project_count = models.Project.objects.count()
 
         self.assertEqual(project_count, initial_project_count + 1)
 ```
@@ -177,6 +181,7 @@ In its minimal form, here’s what the admin page of our `Project` model could l
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 from app_name.models import Project
+
 
 @admin.register(Project)
 class ProjectAdmin(ModelAdmin):
@@ -211,11 +216,12 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from app_name.tests import factories
 
+
 class TestProjectAdmin(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user = factories.UserFactory(is_superuser=True)
-		cls.projects = factories.ProjectFactory.create_batch(6)
+	cls.projects = factories.ProjectFactory.create_batch(6)
 
     def setUp(self):
         self.client.force_login(self.user)
