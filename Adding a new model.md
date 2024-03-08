@@ -136,7 +136,7 @@ from .project_factory import ProjectFactory
 
 ## The factory tests
 
-Testing factories may seem overkill at first, but they can actually save you a lot of headaches. The main purpose of testing factories is simply to make sure they are working as expected. You can waste a lot of time debugging a test before realising that the problem actually comes from one of your factories. They are really quick to write, so let’s not cut corners.
+Testing factories may seem overkill at first, but they can actually save you a lot of headaches. The main purpose of testing factories is simply to make sure they are working as expected. You can waste a lot of time debugging a test before realizing that the problem actually comes from one of your factories. They are really quick to write, so let’s not cut corners.
 
 - [ ]  Implement a test called `test_<model_name>_factory`
 
